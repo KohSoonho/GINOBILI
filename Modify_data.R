@@ -45,15 +45,27 @@ for(i in seq_along(data_total_ginobili)) {
 # Add title column
 data_total_ginobili <- data_total_ginobili %>% mutate(Title = "")
 
-add_emoji <- function(title) {
-  str_c(emoji("trophy"), title, sep = "")
-}
-
-# Title Year
 ## Unicode of medal
 ## Gold: \U0001F947, Silver: \U0001F948, Bronze: \U0001F949, Medal: \U0001F396
+## data_total_ginobili[6, "Title"] <- "\U0001F948" add silver medal
 
-# NBA-Title
+add_title <- function(medal) {
+  function(title) {
+    switch(medal, "trophy" = str_c(emoji("trophy"), title, sep = ""), 
+                  "gold"   = str_c("\U0001F947", title, sep = ""), 
+                  "silver" = str_c("\U0001F948", title, sep = ""),
+                  "bronze" = str_c("\U0001F949", title, sep = ""), 
+                  "medal"  = str_c("\U0001F396", title, sep = ""))
+  }
+}
+
+add_trophy <- add_title("trophy")
+add_gold <- add_title("gold")
+add_silver <- add_title("silver")
+add_bronze <- add_title("bronze")
+add_medal <- add_title("medal")
+
+# Title Year
 lst_champ <- c("02-03", "04-05", "06-07", "13-14")
 lst_allstar <- c("04-05", "10-11")
 lst_3rdteam <- c("07-08", "10-11")
@@ -62,10 +74,30 @@ lst_all_rockie2nd <- "02-03"
 
 # World Title
 lst_gold <- "03-04"
-lst_blondz <- "07-08"
+lst_bronze <- "07-08"
 
 for(i in lst_champ) {
-  data_total_ginobili[data_total_ginobili$Season == i, "Title"] <- add_emoji("NBA Champion")
+  data_total_ginobili[data_total_ginobili$Season == i, "Title"] <- 
+    data_total_ginobili[data_total_ginobili$Season == i, "Title"] %>% 
+    str_c("\n", add_trophy("NBA Champion"), sep = "")
+}
+
+for(i in lst_gold) {
+  data_total_ginobili[data_total_ginobili$Season == i, "Title"] <- 
+  data_total_ginobili[data_total_ginobili$Season == i, "Title"] %>% 
+    str_c("\n", add_gold("Olympic Gold"), sep = "")
+}
+
+for(i in lst_six) {
+  data_total_ginobili[data_total_ginobili$Season == i, "Title"] <- 
+  data_total_ginobili[data_total_ginobili$Season == i, "Title"] %>% 
+    str_c("\n", add_medal("Six Man Year"), sep = "")
+}
+
+for(i in lst_bronze) {
+  data_total_ginobili[data_total_ginobili$Season == i, "Title"] <-  
+  data_total_ginobili[data_total_ginobili$Season == i, "Title"] %>% 
+    str_c("\n", add_bronze("Olympic Bronze"), sep = "")
 }
 
 # Create mutate per function ----------------------------------------------
