@@ -82,16 +82,34 @@ for(i in lst_champ) {
     str_c("\n", add_trophy("NBA Champion"), sep = "")
 }
 
-for(i in lst_gold) {
-  data_total_ginobili[data_total_ginobili$Season == i, "Title"] <- 
-  data_total_ginobili[data_total_ginobili$Season == i, "Title"] %>% 
-    str_c("\n", add_gold("Olympic Gold"), sep = "")
-}
-
 for(i in lst_six) {
   data_total_ginobili[data_total_ginobili$Season == i, "Title"] <- 
   data_total_ginobili[data_total_ginobili$Season == i, "Title"] %>% 
     str_c("\n", add_medal("Six Man Year"), sep = "")
+}
+
+for(i in lst_3rdteam) {
+  data_total_ginobili[data_total_ginobili$Season == i, "Title"] <- 
+    data_total_ginobili[data_total_ginobili$Season == i, "Title"] %>% 
+    str_c("\n", add_medal("NBA 3rd Team"), sep = "")
+}
+
+for(i in lst_allstar) {
+  data_total_ginobili[data_total_ginobili$Season == i, "Title"] <- 
+    data_total_ginobili[data_total_ginobili$Season == i, "Title"] %>% 
+    str_c("\n", add_medal("NBA All Star"), sep = "")
+}
+
+for(i in lst_all_rockie2nd) {
+  data_total_ginobili[data_total_ginobili$Season == i, "Title"] <- 
+    data_total_ginobili[data_total_ginobili$Season == i, "Title"] %>% 
+    str_c("\n", add_medal("NBA All Rokie 2nd Team"), sep = "")
+}
+
+for(i in lst_gold) {
+  data_total_ginobili[data_total_ginobili$Season == i, "Title"] <- 
+    data_total_ginobili[data_total_ginobili$Season == i, "Title"] %>% 
+    str_c("\n", add_gold("Olympic Gold"), sep = "")
 }
 
 for(i in lst_bronze) {
