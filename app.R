@@ -21,7 +21,7 @@ ui <- fluidRow(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
     df_ginobili <- reactive({
-      data_total_ginobili
+      df_ginobili_2k
     })
     
     output$df1 <- DT::renderDataTable(df_ginobili())
