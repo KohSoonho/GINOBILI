@@ -5,9 +5,9 @@ account: akohlikenba
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 274531
-bundleId: 1557941
+bundleId: 2452243
 url: https://akohlikenba.shinyapps.io/ManuGinobili/
-when: 1535462454.78052
+when: 1569749720.76528
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: README.md
